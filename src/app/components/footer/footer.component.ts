@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   @Input() title: string | undefined;
-  @Input() menuItems: Array<string> | undefined;
-  @Input() creators: Array<string> | undefined;
+  @Input() menuItems: any;
+  @Input() creators: any;
   @Input() address: string | undefined;
   
   constructor() { }
