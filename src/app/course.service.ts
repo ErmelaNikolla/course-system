@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Course} from './course';
-import {firebaseConfig} from '../environments/environment'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Course } from './course';
+import { environment } from '../environments/environment'
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +10,7 @@ import {firebaseConfig} from '../environments/environment'
 export class CourseService {
 
     //is it the right one?
-    private apiServerUrl = firebaseConfig.authDomain;
+    private apiServerUrl = environment.firebase.authDomain;
 
     constructor(private http: HttpClient) {    }
 

@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyA3L0_e-dnhfoo9m3jsFh491vrgwktDj4Q",
+    authDomain: "course-system-53e58.firebaseapp.com",
+    projectId: "course-system-53e58",
+    storageBucket: "course-system-53e58.appspot.com",
+    messagingSenderId: "863143875446",
+    appId: "1:863143875446:web:e34793ac3beea97fdc2057",
+    measurementId: "G-L4PSRHVQ8M"}
 };
 
 /*
@@ -13,15 +21,3 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-export const firebaseConfig = {
-  apiKey: "AIzaSyA3L0_e-dnhfoo9m3jsFh491vrgwktDj4Q",
-  authDomain: "course-system-53e58.firebaseapp.com",
-  projectId: "course-system-53e58",
-  storageBucket: "course-system-53e58.appspot.com",
-  messagingSenderId: "863143875446",
-  appId: "1:863143875446:web:e34793ac3beea97fdc2057",
-  measurementId: "G-L4PSRHVQ8M"
-};

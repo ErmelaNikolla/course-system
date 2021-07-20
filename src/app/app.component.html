@@ -1,7 +1,28 @@
 <app-header 
     [title]="title" 
     [menuItems]="menuItems"></app-header>
-<h1>Hello Poiii</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <form (ngSubmit)='createCourse()'>
+                <div class="form-group">
+                    <label for="course">create course</label>
+                    <input type="text" class="form-control" id="course" placeholder="create a course"
+                        [(ngModel)]='courseValue' name="course">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-6">
+            <pre *ngFor='let course of courses | async'>{{course.content}}</pre>
+        </div>
+    </div>
+</div>
+
 <app-footer
     [title]="title" 
     [menuItems]="menuItems"
