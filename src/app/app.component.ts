@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'course-system';
+  title: string = 'Course System';
+  menuItems = ['My courses', 'Courses', 'Create new course'];
 }

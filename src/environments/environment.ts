@@ -14,3 +14,14 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyA3L0_e-dnhfoo9m3jsFh491vrgwktDj4Q",
+  authDomain: "course-system-53e58.firebaseapp.com",
+  projectId: "course-system-53e58",
+  storageBucket: "course-system-53e58.appspot.com",
+  messagingSenderId: "863143875446",
+  appId: "1:863143875446:web:e34793ac3beea97fdc2057",
+  measurementId: "G-L4PSRHVQ8M"
+};
