@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,16 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  title: string = 'Course System';
-  menuItems = [
-    {'title' : 'My courses', 'url' : '/courses/id'}, 
-    {'title' : 'Courses', 'url' : '/courses'}, 
-    {'title' : 'Create new course', 'url' : '/courses/new'}
-  ];
-  address: string = 'Tirana/Albania';
-  creators = ['Ermela Nikolla', 'Green Leef'];
+  @Input() title: string | undefined;
+  @Input() menuItems: Array<string> | undefined;
+  @Input() creators: Array<string> | undefined;
+  @Input() address: string | undefined;
   
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    console.log(this.menuItems)
+  }
 }

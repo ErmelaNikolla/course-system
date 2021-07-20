@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  title: string = 'Course System';
-  menuItems = [
-    {'title' : 'My courses', 'url' : '/courses/id'}, 
-    {'title' : 'Courses', 'url' : '/courses'}, 
-    {'title' : 'Create new course', 'url' : '/courses/new'}
-  ];
+  @Input() title: string | undefined;
+  @Input() menuItems: Array<string> | undefined;
 
   constructor() { }
 
