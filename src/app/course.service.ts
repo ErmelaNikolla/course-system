@@ -34,4 +34,8 @@ export class CourseService {
         return this.http.delete<void>(`${this.apiServerUrl}/delete/${courseId}`);
     }
 
+    public enrollCourse(course: Course): Observable<Course> {
+        return this.http.post<Course>(`${this.apiServerUrl}/enroll`, course);
+    }
+
 }
