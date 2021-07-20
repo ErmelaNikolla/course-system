@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Course} from './course';
+import {firebaseConfig} from '../environments/environment'
 
 @Injectable({
     providedIn: 'root'
 })
 export class CourseService {
 
-    //to be determined from firebase
-    private apiServerUrl = 'http://localhost:8080/api/v1/course';
+    //is it the right one?
+    private apiServerUrl = firebaseConfig.authDomain;
 
     constructor(private http: HttpClient) {    }
 
