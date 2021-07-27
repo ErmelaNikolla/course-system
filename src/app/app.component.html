@@ -2,26 +2,11 @@
     [title]="title" 
     [menuItems]="menuItems"></app-header>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-6">
-            <form (ngSubmit)='createCourse()'>
-                <div class="form-group">
-                    <label for="course">create course</label>
-                    <input type="text" class="form-control" id="course" placeholder="create a course"
-                        [(ngModel)]='courseValue' name="course">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
+<app-my-courses></app-my-courses>
 
-        <div class="col-6">
-            <pre *ngFor='let course of courses | async'>{{course.content}}</pre>
-        </div>
-    </div>
-</div>
+<app-courses></app-courses>
+
+<app-new-course></app-new-course>
 
 <app-footer
     [title]="title" 

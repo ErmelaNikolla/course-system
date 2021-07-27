@@ -10,12 +10,18 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { CoursesComponent } from './components/courses/courses.component';
+import { NewCourseComponent } from './components/new-course/new-course.component';
+import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CoursesComponent,
+    NewCourseComponent,
+    MyCoursesComponent
   ],
   imports: [
     BrowserModule,
