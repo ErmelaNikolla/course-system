@@ -3,7 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/course';
-import { User } from 'src/app/user';
+import { CourseService } from 'src/app/course.service';
 
 @Component({
   selector: 'app-new-course',
@@ -11,21 +11,31 @@ import { User } from 'src/app/user';
   styleUrls: ['./new-course.component.css']
 })
 export class NewCourseComponent implements OnInit {
-  course: Course | undefined;
-  courses :Observable<any[]> | undefined;
+  course : Course | undefined;
+  courses : Observable<any[]> | undefined;
+  courseService : CourseService;
 
-  constructor (public db: AngularFireDatabase){
-    this.courses = db.list('courses').valueChanges();
+  constructor (public db: AngularFireDatabase, courseService: CourseService ){
+    this.courseService = courseService;
+  }
+
+  ngOnInit(): void {
+    this.getCourses();
   }
 
   createCourse() {
-    this.db.list('courses').push({content: this.course})
-    // this.course = '';
+    this.db.list('courses').push({content: this.course});
   }
 
+  getCourses() {
+    this.courses = this.db.list('courses').valueChanges();
+  }
   
+  onAddCourse(addForm: NgForm): void {
+        // document.getElementById('add-course-form').click();
+        console.log(addForm.value);
 
-  ngOnInit(): void {
-  }
+        this.courseService.addCourse(addForm, this.db);
+    }
 
 }

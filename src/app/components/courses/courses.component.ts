@@ -15,6 +15,10 @@ export class CoursesComponent implements OnInit {
     this.courses = db.list('courses').valueChanges();
   }
 
+testmethod(){
+  console.log('hello u clicked')
+}
+
   ngOnInit(): void {
   }
   

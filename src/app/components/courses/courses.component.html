@@ -1,7 +1,24 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <pre *ngFor='let course of courses | async'>{{course.content}}</pre>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Course</th>
+                    <th scope="col">Credit</th>
+                    <th scope="col">Lector</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let course of courses | async'>
+                    <td>{{course.name}}</td>
+                    <td>{{course.credit}}</td>
+                    <td>{{course.lector}}</td>
+                    <td><a class="btn btn-primary" (ngClick)="testmethod">update</a></td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </div>
 </div>
