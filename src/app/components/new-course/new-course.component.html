@@ -8,9 +8,9 @@
                 </button>
             </div>
             <div class="modal-body"> -->
-                <form #addForm="ngForm" (ngSubmit)="onAddCourse(addForm)">
+                <form #addForm="ngForm" (ngSubmit)="onAddCourse(addForm)" class="course">
                     <div class="form-group">
-                        <label for="name">Course Name</label>
+                        <label for="name" ><br> Course Name</label>
                         <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
                     </div>
 
@@ -23,9 +23,9 @@
                         <label for="name">Course Lector</label>
                         
                         <select class="form-control" name="lector" id="lector" ngModel required>
-                            <option value="agimi">agimi</option>
-                            <option value="genci">genci</option>
-                            <option value="cimi">cimi</option>
+                            <option value="Agimi">Agimi</option>
+                            <option value="Bardhyli">Bardhyli</option>
+                            <option value="Teuta">Teuta</option>
                         </select>
                     </div>
 
@@ -64,9 +64,9 @@
                     <label for="name">Course credit</label>
                     
                     <select class="form-select form-select-sm" name="course-lector" id="course-lector" ngModel required>
-                        <option value="agimi">agimi</option>
-                        <option value="genci">genci</option>
-                        <option value="cimi">cimi</option>
+                        <option value="Agimi">Agimi</option>
+                        <option value="Bardhyli">Bardhyli</option>
+                        <option value="Teuta">Teuta</option>
                     </select>
                 </div>
 

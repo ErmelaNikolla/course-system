@@ -15,5 +15,5 @@ export class AppComponent {
     {'title' : 'Create new course', 'url' : '/courses/new'}
   ];
   address: string = 'Tirana/Albania';
-  creators = ['Ermela Nikolla', 'Green Leef'];
+  creators = ['Ermela Nikolla'];
 }

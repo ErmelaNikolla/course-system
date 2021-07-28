@@ -1,0 +1,12 @@
+.form-control{
+    width: 90%;
+    margin-bottom: auto;
+
+}
+.course{
+    width: 70%;
+    margin-bottom: auto;
+    padding-bottom: 5%;
+    padding-left: 10%;
+    color:black;
+}
