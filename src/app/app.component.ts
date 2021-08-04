@@ -23,7 +23,7 @@ export class AppComponent {
     this.afAuth = afAuth;
   }
 
-  isLoggedIn() {
+  userLoggedIn() {
     let result = false;
     this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {
@@ -33,7 +33,7 @@ export class AppComponent {
     return result;
   }
 
-  isLoggedOut() {
+  userLoggedOut() {
     let result = true;
     this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {

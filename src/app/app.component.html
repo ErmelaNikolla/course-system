@@ -2,7 +2,7 @@
     [title]="title" 
     [menuItems]="menuItems"></app-header>
 
-<div ng-if="isLoggedIn">
+<div ng-if="userLoggedIn">
     <app-new-course></app-new-course>
 
     <app-courses></app-courses>
@@ -11,8 +11,9 @@
 </div>
 
 <!-- <div *ngIf="isLoggedIn() === false"> -->
+<!-- <div *ngIf="afAuth.isLoggedIn"> -->
     
-<div ng-if="isLoggedOut">
+<div ng-if="userLoggedOut">
     <firebase-ui></firebase-ui>
 </div>
 
