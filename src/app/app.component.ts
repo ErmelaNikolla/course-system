@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
@@ -16,4 +17,29 @@ export class AppComponent {
   ];
   address: string = 'Tirana/Albania';
   creators = ['Ermela Nikolla'];
+  public afAuth: AngularFireAuth;
+
+  constructor(afAuth: AngularFireAuth) {
+    this.afAuth = afAuth;
+  }
+
+  isLoggedIn() {
+    let result = false;
+    this.afAuth.authState.subscribe(res => {
+      if (res && res.uid) {
+        result = true;
+      } 
+    });
+    return result;
+  }
+
+  isLoggedOut() {
+    let result = true;
+    this.afAuth.authState.subscribe(res => {
+      if (res && res.uid) {
+        result = false;
+      } 
+      return result;
+    });
+  }
 }
