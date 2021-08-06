@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
 
   title: string = 'Course System';
   menuItems = [
-    { 'title': 'My courses', 'url': '/courses/id' },
-    { 'title': 'Courses', 'url': '/courses' },
-    { 'title': 'Create new course', 'url': '/courses/new' }
+    { 'title': 'My courses', 'url': '/courses/id', 'component': 'my-courses'},
+    { 'title': 'Courses', 'url': '/courses', 'component': 'courses' },
+    { 'title': 'Create new course', 'url': '/courses/new', 'component': 'new-course' }
   ];
   address: string = 'Tirana/Albania';
   creators = ['Ermela Nikolla'];
