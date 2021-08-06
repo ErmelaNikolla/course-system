@@ -15,6 +15,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { NewCourseComponent } from './components/new-course/new-course.component';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 import { AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/auth';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -45,7 +46,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireDatabaseModule,
     AppRoutingModule,
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

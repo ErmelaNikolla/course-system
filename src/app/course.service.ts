@@ -26,12 +26,12 @@ export class CourseService {
     }
 
     public addCourse(addForm: NgForm, db: AngularFireDatabase): void {
-        console.log(addForm.value.name);
         db.list('courses').push({name: addForm.value.name, credit: addForm.value.credit, lector:addForm.value.lector})
     }
 
-    public updateCourse(course: Course): void {
-        // return this.http.put<Course>(`${this.apiServerUrl}/update`, course);
+    public updateCourse(editForm: NgForm, db: AngularFireDatabase): void {
+        //todo - fix to update based on the identifier/id of the entry on the list in firebase
+        db.list('courses').push({name: editForm.value.name, credit: editForm.value.credit, lector:editForm.value.lector})
     }
 
     public deleteCourse(courseId: Number): void {

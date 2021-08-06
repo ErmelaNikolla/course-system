@@ -1,24 +1,18 @@
-<app-header 
-    [title]="title" 
-    [menuItems]="menuItems"></app-header>
+<app-header [title]="title" [menuItems]="menuItems" [isUserLoggedin]="isUserLoggedin"></app-header>
 
-<div ng-if="userLoggedIn">
+<div *ngIf="isUserLoggedin">
     <app-new-course></app-new-course>
 
     <app-courses></app-courses>
-    
+
     <app-my-courses></app-my-courses>
 </div>
 
 <!-- <div *ngIf="isLoggedIn() === false"> -->
 <!-- <div *ngIf="afAuth.isLoggedIn"> -->
-    
-<div ng-if="userLoggedOut">
+
+<div *ngIf="!isUserLoggedin">
     <firebase-ui></firebase-ui>
 </div>
 
-<app-footer
-    [title]="title" 
-    [menuItems]="menuItems"
-    [address]="address" 
-    [creators]="creators"></app-footer>
+<app-footer [title]="title" [menuItems]="menuItems" [address]="address" [creators]="creators"></app-footer>

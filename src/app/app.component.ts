@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
@@ -8,38 +8,41 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title: string = 'Course System';
   menuItems = [
-    {'title' : 'My courses', 'url' : '/courses/id'}, 
-    {'title' : 'Courses', 'url' : '/courses'}, 
-    {'title' : 'Create new course', 'url' : '/courses/new'}
+    { 'title': 'My courses', 'url': '/courses/id' },
+    { 'title': 'Courses', 'url': '/courses' },
+    { 'title': 'Create new course', 'url': '/courses/new' }
   ];
   address: string = 'Tirana/Albania';
   creators = ['Ermela Nikolla'];
-  public afAuth: AngularFireAuth;
 
-  constructor(afAuth: AngularFireAuth) {
-    this.afAuth = afAuth;
-  }
-
-  userLoggedIn() {
-    let result = false;
+  constructor(private afAuth: AngularFireAuth) { }
+  public isUserLoggedin = false;
+  ngOnInit(): void {
     this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {
-        result = true;
-      } 
+        console.log("😊", res);
+        this.isUserLoggedin = true;
+      }
+
     });
-    return result;
+
   }
 
-  userLoggedOut() {
-    let result = true;
-    this.afAuth.authState.subscribe(res => {
-      if (res && res.uid) {
-        result = false;
-      } 
-      return result;
+
+
+  public logout() {
+    this.afAuth.signOut().then(val => {
+      this.isUserLoggedin = false;
+      // alert("U clogua");
     });
   }
+
+
+
+
+
 }
