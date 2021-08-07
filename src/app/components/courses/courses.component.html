@@ -12,6 +12,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor='let course of courses | async'>
+                    <!-- -{{course.key}}-{{course.payload.val.doc.data()}}- -->
                     <td>{{course.name}}</td>
                     <td>{{course.credit}}</td>
                     <td>{{course.lector}}</td>
@@ -21,14 +22,14 @@
               </table>
               <ng-template #content let-c="close" let-d="dismiss">
                 <div class="modal-header">
-                  <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+                  <h4 class="modal-title" id="modal-basic-title"></h4>
                   <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
                   
-                <form #editForm="ngForm" (ngSubmit)="updateCourse(editForm)" class="course">
+                <form #editForm ="ngForm" class="course">
                   <div class="form-group">
                       <label for="name" ><br> Course Name</label>
                       <input type="text" ngModel value={{courseSelected.name}} name="name" class="form-control" id="name" placeholder={{courseSelected.name}} required>
@@ -50,8 +51,8 @@
                   </div>
 
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-dark" (click)="d('Cancel')">Cancel</button>
-                      <button type="button" class="btn btn-outline-dark" (click)="updateCourse(editForm)">Save</button>
+                      <button type="button" class="btn btn-outline-dark" (click)="deleteCourse(editForm,courseSelected.key)">Delete</button>
+                      <button type="button" class="btn btn-outline-dark" (click)="updateCourse(editForm,courseSelected.key)">Save</button>
                     </div>
                   </form>
                 </div>

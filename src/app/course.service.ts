@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from './course';
-import { environment } from '../environments/environment'
+// import { MyCourses} from './mycourses';
+// import { NewCourses } from './newcourses';
+import { environment } from '../environments/environment';
 import { NgForm } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 
@@ -13,6 +15,8 @@ export class CourseService {
 
     //is it the right one?
     private apiServerUrl = environment.firebase.authDomain;
+    delete: any;
+    
 
     // constructor(private http: HttpClient) {    }
     constructor() {    }
@@ -26,16 +30,23 @@ export class CourseService {
     }
 
     public addCourse(addForm: NgForm, db: AngularFireDatabase): void {
-        db.list('courses').push({name: addForm.value.name, credit: addForm.value.credit, lector:addForm.value.lector})
+        db.list('courses').push({name: addForm.value.name, credit: addForm.value.credit, lector:addForm.value.lector});
     }
 
-    public updateCourse(editForm: NgForm, db: AngularFireDatabase): void {
+    public updateCourse(editForm: NgForm, db: AngularFireDatabase,key :string): void {
         //todo - fix to update based on the identifier/id of the entry on the list in firebase
-        db.list('courses').push({name: editForm.value.name, credit: editForm.value.credit, lector:editForm.value.lector})
+        // db.list('courses').push({name: editForm.value.name, credit: editForm.value.credit, lector:editForm.value.lector});
+        console.log ("key", key);
+   db.list("courses").update(key,{name:editForm.value.name})
+
+   
     }
 
-    public deleteCourse(courseId: Number): void {
-        // return this.http.delete<void>(`${this.apiServerUrl}/delete/${courseId}`);
+    public deleteCourse(addForm:NgForm, courseId: String, db:AngularFireDatabase): void {
+        //  return this.delete<void>(`${this.apiServerUrl}/delete/${courseId}`);
+        console.log('you are here')
+        const itemsRef = db.list('courses');
+        itemsRef.remove('key');
     }
 
     public enrollCourse(course: Course): void {

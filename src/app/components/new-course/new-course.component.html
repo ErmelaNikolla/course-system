@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" id="add-course-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="add-course-form" class="btn btn-secondary" data-dismiss="modal" ng-show="!inactive">Close</button>
                         <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
                     </div>
                 </form>

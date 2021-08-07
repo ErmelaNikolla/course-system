@@ -1,12 +1,6 @@
 <app-header [title]="title" [menuItems]="menuItems" [isUserLoggedin]="isUserLoggedin"></app-header>
 
-<div *ngIf="isUserLoggedin">
-    <app-new-course></app-new-course>
-
-    <app-courses></app-courses>
-
-    <app-my-courses></app-my-courses>
-</div>
+<router-outlet></router-outlet>
 
 <!-- <div *ngIf="isLoggedIn() === false"> -->
 <!-- <div *ngIf="afAuth.isLoggedIn"> -->
