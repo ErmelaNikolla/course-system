@@ -19,8 +19,8 @@ export class MyCoursesComponent implements OnInit {
 
 
   constructor(public db: AngularFireDatabase,
-    config: NgbModalConfig, 
-    private modalService: NgbModal, 
+    config: NgbModalConfig,
+    private modalService: NgbModal,
     courseService: CourseService ) {
       this.courses = db.list('courses').valueChanges()
       console.log('hello from')
@@ -44,9 +44,9 @@ export class MyCoursesComponent implements OnInit {
   }
 
   deleteCourse(form: NgForm,key:string) {
-    this.courseService.deleteCourse(form, key, this.db);
+    this.courseService.deleteCourse(key, this.db);
   }
-  
+
   openModal(course: Course, content:any) {
     this.courseSelected = course;
     this.modalService.open(content);

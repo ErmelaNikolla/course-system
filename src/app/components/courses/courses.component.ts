@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/course';
+import { Lectors } from 'src/app/lectors';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { CourseService } from 'src/app/course.service';
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-courses',
@@ -13,53 +15,55 @@ import { CourseService } from 'src/app/course.service';
   providers: [NgbModalConfig, NgbModal]
 })
 export class CoursesComponent implements OnInit {
-  courses: Observable<any[]> | undefined | any;
+  courses: Observable<Course[]> | undefined | any;
   courseSelected: Course | any;
+  lectors:Observable<Lectors[]> |  any;
   courseService : CourseService;
-  keys:any;
 
   constructor(public db: AngularFireDatabase,
-    config: NgbModalConfig, 
-    private modalService: NgbModal, 
-    courseService: CourseService ) {
-      this.courses = db.list('courses').valueChanges()
-      console.log('hello from')
-      this.keys = db.list('courses')
+              config: NgbModalConfig,
+              private modalService: NgbModal,
+              courseService: CourseService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+    this.courseService = courseService;
+    const coursesList = db.list('courses');
+    this.courses = coursesList
       .snapshotChanges()
-      // .pipe(map(items => {
-      //   return items.map(a => {
-      //     const data = a.payload.val();
-      //     const key = a.payload.key;
-      //     return {key, data};
-      //   });
-      // }));
-      console.log(this.keys)
-      config.backdrop = 'static';
-      config.keyboard = false;
-      this.courseService = courseService;
+      .pipe(map(courses => {
+        return courses.map(course => {
+          return Object.assign({}, {key: course.payload.key}, course.payload.val());
+        });
+      }));
+
+    this.lectors = coursesList
+      .snapshotChanges()
+      .pipe(map(lectors => {
+        return lectors.map(lector => {
+          return Object.assign({}, {key: lector.payload.key}, lector.payload.val());
+        });
+      }));
   }
 
   updateCourse(form: NgForm,key:string) {
-    this.courseService.updateCourse(form, this.db,key);
+    this.courseService.updateCourse(form, this.db, key);
+    this.closeModal()
   }
 
-  deleteCourse(form: NgForm,key:string) {
-    this.courseService.deleteCourse(form, key, this.db);
+  deleteCourse(key:string) {
+    this.courseService.deleteCourse(key, this.db);
+    this.closeModal()
   }
-  
+
   openModal(course: Course, content:any) {
     this.courseSelected = course;
     this.modalService.open(content);
   }
 
-  ngOnInit(): void {
-    this.courses?.subscribe(
-      console.log
-    )
-    console.log('here-1')
-    this.keys.subscribe(
-      console.log
-    )
+  closeModal() {
+    this.modalService.dismissAll();
   }
 
+  ngOnInit(): void {
+  }
 }

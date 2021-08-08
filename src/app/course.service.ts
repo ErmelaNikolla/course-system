@@ -33,20 +33,20 @@ export class CourseService {
         db.list('courses').push({name: addForm.value.name, credit: addForm.value.credit, lector:addForm.value.lector});
     }
 
-    public updateCourse(editForm: NgForm, db: AngularFireDatabase,key :string): void {
+    public updateCourse(editForm: NgForm, db: AngularFireDatabase,id :string): void {
         //todo - fix to update based on the identifier/id of the entry on the list in firebase
-        // db.list('courses').push({name: editForm.value.name, credit: editForm.value.credit, lector:editForm.value.lector});
-        console.log ("key", key);
-   db.list("courses").update(key,{name:editForm.value.name})
+        // db.list('courses').db.list({name: editForm.value.name, credit: editForm.value.credit, lector:editForm.value.lector});
+        //  console.log ("key", key);
+   db.list("courses").update(id,{name: editForm.value.name, credit: editForm.value.credit, lector:editForm.value.lector})
 
    
     }
 
-    public deleteCourse(addForm:NgForm, courseId: String, db:AngularFireDatabase): void {
+    public deleteCourse(id: string, db:AngularFireDatabase): void {
         //  return this.delete<void>(`${this.apiServerUrl}/delete/${courseId}`);
         console.log('you are here')
         const itemsRef = db.list('courses');
-        itemsRef.remove('key');
+        itemsRef.remove(id);
     }
 
     public enrollCourse(course: Course): void {

@@ -11,12 +11,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor='let course of courses | async'>
-                    <!-- -{{course.key}}-{{course.payload.val.doc.data()}}- -->
+                <tr *ngFor='let course of courses | async'>
                     <td>{{course.name}}</td>
                     <td>{{course.credit}}</td>
                     <td>{{course.lector}}</td>
-                    <td><a class="btn btn-primary" (click)="openModal(course, content)">update</a></td>
+                    <td><a class="btn btn-primary" (click)="openModal(course, content)">update</a>
+                    <button type="button" class="btn btn-danger" (click)="deleteCourse(course.key)">Delete</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -28,7 +28,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  
+
                 <form #editForm ="ngForm" class="course">
                   <div class="form-group">
                       <label for="name" ><br> Course Name</label>
@@ -42,22 +42,17 @@
 
                   <div class="form-group">
                       <label for="name">Course Lector</label>
-                      
                       <select class="form-control" name="lector" id="lector" ngModel required>
-                          <option value="Agimi">Agimi</option>
-                          <option value="Bardhyli">Bardhyli</option>
-                          <option value="Teuta">Teuta</option>
+                          <option  *ngFor='let lector of lectors  | async' value="{{lector.name}}">{{lector.name}}</option>
                       </select>
                   </div>
 
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-dark" (click)="deleteCourse(editForm,courseSelected.key)">Delete</button>
-                      <button type="button" class="btn btn-outline-dark" (click)="updateCourse(editForm,courseSelected.key)">Save</button>
+                      <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="updateCourse(editForm,courseSelected.key)">Save</button>
                     </div>
                   </form>
                 </div>
               </ng-template>
-              
         </div>
     </div>
 </div>
