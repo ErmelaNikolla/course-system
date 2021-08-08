@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/course';
+import { AppComponent } from 'src/app/app.component';
 import { CourseService } from 'src/app/course.service';
 
 @Component({
@@ -14,9 +15,13 @@ export class NewCourseComponent implements OnInit {
   course : Course | undefined;
   courses : Observable<any[]> | undefined;
   courseService : CourseService;
+  appComponent: AppComponent;
 
-  constructor (public db: AngularFireDatabase, courseService: CourseService ){
+  constructor (public db: AngularFireDatabase,
+     courseService: CourseService,
+     appComponent: AppComponent ){
     this.courseService = courseService;
+    this.appComponent = appComponent;
   }
 
   ngOnInit(): void {

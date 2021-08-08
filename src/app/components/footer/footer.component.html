@@ -8,7 +8,7 @@
                     </div>
                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
                         <h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>                        
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav" *ngIf="appComponent.isUserLoggedin">
                             <li class="nav-item" *ngFor="let item of menuItems">
                                 <a class="nav-link" routerLink={{item.component}}>{{item.title}}</a>
                             </li>

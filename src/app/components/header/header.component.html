@@ -3,8 +3,8 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav w-100">
+  <div class="collapse navbar-collapse" id="navbarNav" >
+    <ul class="navbar-nav w-100" *ngIf="appComponent.isUserLoggedin">
       <li class="nav-item" *ngFor="let item of menuItems">
         <a class="nav-link" href={{item.component}} routerLinkActive="active">{{item.title}}</a>
       </li>

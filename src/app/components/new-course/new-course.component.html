@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body"> -->
-                <form #addForm="ngForm" (ngSubmit)="onAddCourse(addForm)" class="course">
+                <form #addForm="ngForm" (ngSubmit)="onAddCourse(addForm)" class="course" *ngIf="appComponent.isUserLoggedin">
                     <div class="form-group">
                         <label for="name" ><br> Course Name</label>
                         <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>

@@ -7,6 +7,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { CourseService } from 'src/app/course.service';
 import {map} from "rxjs/operators";
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-courses',
@@ -19,15 +20,18 @@ export class CoursesComponent implements OnInit {
   courseSelected: Course | any;
   lectors:Observable<Lectors[]> |  any;
   courseService : CourseService;
+  appComponent: AppComponent;
 
   constructor(public db: AngularFireDatabase,
               config: NgbModalConfig,
               private modalService: NgbModal,
-              courseService: CourseService) {
+              courseService: CourseService,
+              appComponent: AppComponent) {
     config.backdrop = 'static';
     config.keyboard = false;
     this.courseService = courseService;
-    const coursesList = db.list('courses');
+    this.appComponent = appComponent;
+    let coursesList = db.list('courses');
     this.courses = coursesList
       .snapshotChanges()
       .pipe(map(courses => {

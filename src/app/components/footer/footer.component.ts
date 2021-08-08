@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-footer',
@@ -9,9 +10,13 @@ export class FooterComponent implements OnInit {
   @Input() title: string | undefined;
   @Input() menuItems: any;
   @Input() creators: any;
-  @Input() address: string | undefined;
+  @Input() address: string | undefined;             
+  appComponent: AppComponent;
   
-  constructor() { }
+  constructor(appComponent: AppComponent) 
+  {
+    this.appComponent = appComponent;
+  }
 
   ngOnInit(): void { 
     console.log(this.menuItems)

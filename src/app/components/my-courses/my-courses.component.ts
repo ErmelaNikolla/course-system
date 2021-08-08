@@ -5,6 +5,7 @@ import { Course } from 'src/app/course';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { CourseService } from 'src/app/course.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-my-courses',
@@ -15,14 +16,17 @@ export class MyCoursesComponent implements OnInit {
   courses: Observable<any[]> | undefined | any;
   courseSelected: Course | any;
   courseService : CourseService;
+  appComponent: AppComponent;
   keys:any;
 
 
   constructor(public db: AngularFireDatabase,
     config: NgbModalConfig,
-    private modalService: NgbModal,
+    private modalService: NgbModal,              
+    appComponent: AppComponent,
     courseService: CourseService ) {
-      this.courses = db.list('courses').valueChanges()
+      this.courses = db.list('courses').valueChanges();
+      this.appComponent = appComponent;
       console.log('hello from')
       this.keys = db.list('courses')
       .snapshotChanges()
