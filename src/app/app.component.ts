@@ -18,21 +18,39 @@ export class AppComponent implements OnInit {
   ];
   address: string = 'Tirana/Albania';
   creators = ['Ermela Nikolla'];
+  authedUser:any;
 
   constructor(private afAuth: AngularFireAuth) { }
   public isUserLoggedin = false;
   ngOnInit(): void {
+    this.authedUser = {email:''}
     this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {
         console.log("😊", res);
+        this.authedUser = res;
         this.isUserLoggedin = true;
       }
-
     });
 
   }
 
+  public isAdmin() {
+    if(this.authedUser.email === 'admin@course.com')
+      return true;
+    return false;
+  }
 
+  public isLector() {
+    if(this.authedUser.email === 'lector@course.com')
+      return true;
+    return false;
+  }
+
+  public isStudent() {
+    if(this.authedUser.email === 'student@course.com')
+      return true;
+    return false;
+  }
 
   public logout() {
     this.afAuth.signOut().then(val => {
@@ -40,9 +58,4 @@ export class AppComponent implements OnInit {
       // alert("U clogua");
     });
   }
-
-
-
-
-
 }

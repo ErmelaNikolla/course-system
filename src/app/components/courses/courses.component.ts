@@ -50,13 +50,25 @@ export class CoursesComponent implements OnInit {
   }
 
   updateCourse(form: NgForm,key:string) {
-    this.courseService.updateCourse(form, this.db, key);
-    this.closeModal()
+    if(this.appComponent.isAdmin() || this.appComponent.isLector()) {
+      this.courseService.updateCourse(form, this.db, key);
+      this.closeModal()
+    } else {
+      alert('you are not allowed to do such action');
+    }
   }
 
   deleteCourse(key:string) {
-    this.courseService.deleteCourse(key, this.db);
-    this.closeModal()
+    if(this.appComponent.isAdmin()) {
+      this.courseService.deleteCourse(key, this.db);
+      this.closeModal()
+    } else {
+      alert('you are not allowed to do such action');
+    }
+  }
+
+  enrollCourse(key:string) {
+    console.log('hello you are trying to enroll into the course with the id - '+key)
   }
 
   openModal(course: Course, content:any) {

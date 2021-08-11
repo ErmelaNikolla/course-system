@@ -15,8 +15,11 @@
                     <td>{{course.name}}</td>
                     <td>{{course.credit}}</td>
                     <td>{{course.lector}}</td>
-                    <td><a class="btn btn-primary" (click)="openModal(course, content)">update</a>
-                    <button type="button" class="btn btn-danger" (click)="deleteCourse(course.key)">Delete</button></td>
+                    <td>
+                      <a class="btn btn-primary" (click)="openModal(course, content)" *ngIf="!appComponent.isStudent()">Update</a>
+                      <button type="button" class="btn btn-danger" (click)="deleteCourse(course.key)" *ngIf="!appComponent.isStudent()">Delete</button>
+                      <button type="button" class="btn btn-danger" (click)="enrollCourse(course.key)" *ngIf="appComponent.isStudent()">Enroll</button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -42,8 +45,10 @@
 
                   <div class="form-group">
                       <label for="name">Course Lector</label>
-                      <select class="form-control" name="lector" id="lector" ngModel required>
-                          <option  *ngFor='let lector of lectors  | async' value="{{lector.name}}">{{lector.name}}</option>
+                      <select class="form-control" name="lector" id="lector" ngModel required>    
+                        <option value="Agimi">Agimi</option>
+                        <option value="Bardhyli">Bardhyli</option>
+                        <option value="Teuta">Teuta</option>
                       </select>
                   </div>
 

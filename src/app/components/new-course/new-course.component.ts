@@ -29,7 +29,11 @@ export class NewCourseComponent implements OnInit {
   }
 
   createCourse() {
-    this.db.list('courses').push({content: this.course});
+    if(this.appComponent.isAdmin() || this.appComponent.isLector()) {
+      this.db.list('courses').push({content: this.course});
+    } else {
+      alert('you are not allowed to do such action');
+    }
   }
 
   getCourses() {
