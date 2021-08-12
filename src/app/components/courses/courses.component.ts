@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MyCoursesComponent } from './../my-courses/my-courses.component';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/course';
@@ -8,12 +9,14 @@ import { NgForm } from '@angular/forms';
 import { CourseService } from 'src/app/course.service';
 import {map} from "rxjs/operators";
 import { AppComponent } from 'src/app/app.component';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css'],
-  providers: [NgbModalConfig, NgbModal]
+  providers: [NgbModalConfig, NgbModal],
+  // <app-my-courses [mycoursesMessage]="coursesMessage"></app-my-courses>
 })
 export class CoursesComponent implements OnInit {
   courses: Observable<Course[]> | undefined | any;
@@ -21,6 +24,10 @@ export class CoursesComponent implements OnInit {
   lectors:Observable<Lectors[]> |  any;
   courseService : CourseService;
   appComponent: AppComponent;
+  coursesMessage = "message from courses";
+  @ViewChild(ChildComponent) child: any;
+  message: any;
+  data: any;
 
   constructor(public db: AngularFireDatabase,
               config: NgbModalConfig,
@@ -67,8 +74,8 @@ export class CoursesComponent implements OnInit {
     }
   }
 
-  enrollCourse(key:string) {
-    console.log('hello you are trying to enroll into the course with the id - '+key)
+  enrollCourse(course : Course) {
+    this.courseService.enrollCourse(course, 'student@course.com', this.db);
   }
 
   openModal(course: Course, content:any) {
@@ -81,5 +88,10 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.data.currentMessage.subscribe((message: any) => this.message = message)
   }
 }
+function ChildComponent(ChildComponent: any) {
+  throw new Error('Function not implemented.');
+}
+

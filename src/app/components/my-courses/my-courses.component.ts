@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/course';
@@ -6,6 +6,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { CourseService } from 'src/app/course.service';
 import { AppComponent } from 'src/app/app.component';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-my-courses',
@@ -18,6 +19,9 @@ export class MyCoursesComponent implements OnInit {
   courseService : CourseService;
   appComponent: AppComponent;
   keys:any;
+  message: string | undefined;
+  data: any;
+  // @Input() mycoursesMesage: string | undefined;
 
 
   constructor(public db: AngularFireDatabase,
@@ -64,6 +68,7 @@ export class MyCoursesComponent implements OnInit {
     this.keys.subscribe(
       console.log
     )
+    this.data.currentMessage.subscribe((message: any) => this.message = message)
   }
 
 

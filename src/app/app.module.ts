@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +18,9 @@ import { MyCoursesComponent } from './components/my-courses/my-courses.component
 import { AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageComponent } from './homepage/homepage.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -48,7 +52,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppRoutingModule,
     AngularFireAuthModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

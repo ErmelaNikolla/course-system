@@ -1,5 +1,29 @@
 <div class="container-fluid" *ngIf="appComponent.isUserLoggedin">
-    <div class="row">
+  <h1>Here are my courses</h1>
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Course</th>
+            <th scope="col">Credit</th>
+            <th scope="col">Lector</th>
+          </tr>
+        </thead> 
+        <tbody>
+          <tr *ngFor='let course of courses | async'>
+              <td>{{course.name}}</td>
+              <td>{{course.credit}}</td>
+              <td>{{course.lector}}</td>
+            </tr>
+          </tbody> 
+      </table>
+    </div>
+
+    
+  </div>
+    <!-- <div class="row">
+      
         <div class="col-12" >
             <table class="table">
                 <thead>
@@ -51,12 +75,12 @@
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-outline-dark" (click)="deleteCourse(editForm,courseSelected.key)">Rollout</button>
-                      <!-- <button type="button" class="btn btn-outline-dark" (click)="updateCourse(editForm,courseSelected.key)">Save</button> -->
+                      <button type="button" class="btn btn-outline-dark" (click)="updateCourse(editForm,courseSelected.key)">Save</button>
                     </div>
                   </form>
                 </div>
               </ng-template>
               
         </div>
-    </div>
+    </div> -->
 </div>
