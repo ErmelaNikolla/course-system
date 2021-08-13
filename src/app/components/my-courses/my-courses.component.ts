@@ -29,7 +29,7 @@ export class MyCoursesComponent implements OnInit {
     private modalService: NgbModal,              
     appComponent: AppComponent,
     courseService: CourseService ) {
-      this.courses = db.list('courses').valueChanges();
+      this.courses = db.list('student-courses').valueChanges();
       this.appComponent = appComponent;
       console.log('hello from')
       this.keys = db.list('courses')

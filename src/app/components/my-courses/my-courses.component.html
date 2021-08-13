@@ -12,9 +12,9 @@
         </thead> 
         <tbody>
           <tr *ngFor='let course of courses | async'>
-              <td>{{course.name}}</td>
-              <td>{{course.credit}}</td>
-              <td>{{course.lector}}</td>
+              <td>{{course[0].name}}</td>
+              <td>{{course[0].credit}}</td>
+              <td>{{course[0].lector}}</td>
             </tr>
           </tbody> 
       </table>
