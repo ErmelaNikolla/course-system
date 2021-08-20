@@ -4,10 +4,13 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav" >
-    <ul class="navbar-nav w-100" *ngIf="appComponent.isUserLoggedin">
-      <li class="nav-item" *ngFor="let item of menuItems">
+    <ul class="navbar-nav w-100" *ngIf="isUserLoggedin">
+      <li class="nav-item" *ngFor="let item of menuItems" >
         <a class="nav-link" href={{item.component}} routerLinkActive="active">{{item.title}}</a>
       </li>
+      <!-- <li class="nav-item" *ngFor="let item of menuItems2" ngIf = 'isStudent'>
+        <a class="nav-link" href={{item.component}} routerLinkActive="active">{{item.title}}</a>
+      </li> -->
       <!-- <a class="nav-link" routerLink=' routerLinkActive="active">test new course</a> -->
       
       <li class="nav-item" *ngIf="isUserLoggedin" style="margin-left:auto !important;">

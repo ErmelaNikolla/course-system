@@ -10,15 +10,14 @@ export class FooterComponent implements OnInit {
   @Input() title: string | undefined;
   @Input() menuItems: any;
   @Input() creators: any;
-  @Input() address: string | undefined;             
+  @Input() address: string | undefined;
   appComponent: AppComponent;
-  
-  constructor(appComponent: AppComponent) 
-  {
+
+  constructor(appComponent: AppComponent) {
     this.appComponent = appComponent;
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     console.log(this.menuItems)
   }
 }

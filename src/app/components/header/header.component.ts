@@ -1,5 +1,7 @@
+import { AppComponent } from 'src/app/app.component';
 import { Component, OnInit, Input } from '@angular/core';
-import {AppComponent} from '../../app.component';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-header',
@@ -9,12 +11,23 @@ import {AppComponent} from '../../app.component';
 export class HeaderComponent implements OnInit {
   @Input() title: any;
   @Input() menuItems: any;
+  // @Input() menuItems2: any;
   @Input() isUserLoggedin: any;
+
   appComponent: AppComponent;
-
-  constructor(test: AppComponent) {this.appComponent = test }
-
+  constructor 
+  
+  (private afAuth: AngularFireAuth, appComponent: AppComponent) {this.appComponent = appComponent; }
+  
   ngOnInit(): void {
+  }
+
+  public logout() {
+    this.afAuth.signOut().then(_ => {
+      this.isUserLoggedin = false;
+      
+      // alert("U clogua");
+    });
   }
 
 }

@@ -6,6 +6,7 @@ import { Course } from 'src/app/course';
 import { AppComponent } from 'src/app/app.component';
 import { CourseService } from 'src/app/course.service';
 
+
 @Component({
   selector: 'app-new-course',
   templateUrl: './new-course.component.html',
@@ -16,6 +17,10 @@ export class NewCourseComponent implements OnInit {
   courses : Observable<any[]> | undefined;
   courseService : CourseService;
   appComponent: AppComponent;
+
+  isAdmin = false;
+  isStudent = false;
+  isLector = false;
 
   constructor (public db: AngularFireDatabase,
      courseService: CourseService,
@@ -29,7 +34,7 @@ export class NewCourseComponent implements OnInit {
   }
 
   createCourse() {
-    if(this.appComponent.isAdmin() || this.appComponent.isLector()) {
+    if(!this.isStudent) {
       this.db.list('courses').push({content: this.course});
     } else {
       alert('you are not allowed to do such action');

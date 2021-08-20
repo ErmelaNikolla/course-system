@@ -8,6 +8,7 @@
                 </button>
             </div>
             <div class="modal-body"> -->
+                <div class="new" *ngIf = '!isStudent'>
                 <form #addForm="ngForm" (ngSubmit)="onAddCourse(addForm)" class="course" *ngIf="appComponent.isUserLoggedin">
                     <div class="form-group">
                         <label for="name" ><br> Course Name</label>
@@ -31,9 +32,10 @@
 
                     <div class="modal-footer">
                         <button type="button" id="add-course-form" class="btn btn-secondary" data-dismiss="modal" ng-show="!inactive">Close</button>
-                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" *ngIf = "!isStudent" >Save changes</button>
                     </div>
                 </form>
+            </div>
             <!-- </div>
         </div>
     </div>

@@ -16,9 +16,9 @@
                   <td>{{course.credit}}</td>
                   <td>{{course.lector}}</td>
                   <td>
-                    <a class="btn btn-primary" (click)="openModal(course, content)" *ngIf="!appComponent.isStudent()">Update</a>
-                    <button type="button" class="btn btn-danger" (click)="deleteCourse(course.key)" *ngIf="!appComponent.isStudent()">Delete</button>
-                    <button type="button" class="btn btn-danger" (click)="enrollCourse(course)" *ngIf="appComponent.isStudent()">Add</button>
+                    <a class="btn btn-primary" (click)="openModal(course, content)" *ngIf="!isStudent">Update</a>
+                    <button type="button" class="btn btn-danger" (click)="deleteCourse(course.key)" *ngIf="isAdmin">Delete</button>
+                    <button type="button" class="btn btn-danger" (click)="enrollCourse(course)" *ngIf="isStudent">Add</button>
                   </td>
                 </tr>
               </tbody>
@@ -53,7 +53,7 @@
                 </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="updateCourse(editForm,courseSelected.key)">Save</button>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="updateCourse(editForm,courseSelected.key)" *ngIf="!isStudent">Save</button>
                   </div>
                 </form>
               </div>
@@ -61,3 +61,4 @@
       </div>
   </div>
 </div>
+
